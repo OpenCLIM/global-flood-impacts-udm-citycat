@@ -1,2 +1,2 @@
-# global-flood-impacts-udm-citycat
-A model merging new urban fabric with existing urban form
+# udm-to-citycat
+Cleans UDM data for CityCat
