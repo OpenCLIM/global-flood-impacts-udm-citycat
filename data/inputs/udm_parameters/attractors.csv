@@ -1,0 +1,6 @@
+layer_name,reverse_polarity_flag,layer_weight
+roads-prox-gb-bfc_clip.asc,1,1
+rail-prox-gb-bfc_clip.asc,1,3
+urban-prox-gb-bfc_clip.asc,1,4
+biodiv15cons-gb-bfc_clip.asc,1,1
+agri-cov-attr-gb-bfc_clip.asc,1,1

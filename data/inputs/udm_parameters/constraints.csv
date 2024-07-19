@@ -1,0 +1,8 @@
+layer_name,current_development_flag,layer_threshold
+water-cov-gb-bfc_clip.asc,0,25
+slope20-gb-bfc_clip.asc,0,0
+agri-cov-gb-bfc_clip.asc,0,50
+greenspace-cov-gb-bfc_clip.asc,0,25
+habitat-cov-gb-bfc_clip.asc,0,25
+env-cov-gb-bfc_clip.asc,0,25
+dev-cov-gb-bfc_clip.asc,1,25
