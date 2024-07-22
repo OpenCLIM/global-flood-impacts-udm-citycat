@@ -105,7 +105,7 @@ buildings = glob(inputs_path + "/buildings/*.*", recursive = True)
 logger.info(buildings)
 
 # Move the buildings to the output
-# shutil.copy(buildings[0], os.path.join(ia_path,'buildings_exist.gpkg'))
+#shutil.copy(buildings[0], os.path.join(ia_path,'buildings_exist.gpkg'))
 
 # Read the buildings
 e_builds = gpd.read_file(buildings[0])
@@ -157,7 +157,7 @@ if len(check) != 0 :
         if not os.path.exists(inputs_greenspaces_path):
             os.mkdir(inputs_greenspaces_path)
         # Move the relevent files into the correct folders
-        # shutil.copy(os.path.join(inputs_path,'buildings.gpkg'), os.path.join(ia_path,'buildings_udm.gpkg'))
+        #shutil.copy(os.path.join(inputs_path,'buildings.gpkg'), os.path.join(ia_path,'buildings_udm.gpkg'))
         shutil.move(os.path.join(inputs_path,'buildings.gpkg'), os.path.join(inputs_buildings_path,'buildings_udm.gpkg'))
         shutil.move(os.path.join(inputs_path,'greenspace.gpkg'), os.path.join(inputs_greenspaces_path,'greenspace_udm.gpkg'))
         zip.close()
@@ -207,8 +207,8 @@ if stop_code == 0 :
     #Define the projection for each of the geopackages to ensure all projections are the same
     u_builds.set_crs(dst_crs, inplace=True)
     e_builds.set_crs(dst_crs, inplace=True)
-    e_builds1 = e_builds.to_file(os.path.join(ia_path,'buildings_exist.gpkg'))
-    u_builds1 = u_builds.to_file(os.path.join(ia_path,'buildings_udm.gpkg'))
+    u_builds.to_file(os.path.join(ia_path,'buildings_udm.gpkg'),driver='GPKG')
+    e_builds.to_file(os.path.join(ia_path,'buildings_exist.gpkg'),driver='GPKG')
 
     if green_check != 'no':
         u_green = gpd.read_file(os.path.join(inputs_path,'green_areas','greenspace_udm.gpkg'))
