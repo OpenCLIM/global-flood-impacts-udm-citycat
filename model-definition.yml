@@ -1,14 +1,14 @@
 kind: M
 api_version: v1beta3
 metadata:
-  display_name: Global_Urban_Flooding:UDM to City Cat
+  display_name: Global Urban_Flooding:UDM to City Cat
   contact_point_name: Olivia Butters
   contact_point_email: olivia.butters@newcastle.ac.uk
   name: udmcc
   publisher: Newcastle University
   summary: >
     This model takes the data produced by the urban development model and formats it for CityCat. 
-  source_code: https://github.com/OpenCLIM/global-flood-impacts-udm-citycat/
+  source_code: https://github.com/OpenCLIM/global-flood-impacts-udm-citycat
   description: >
     The urban fabric generator produces geopackage files defining where new urban development will take place according to the projected
     socio-economic pathways. Dependent on constraints and attractors, some pathways permit the building of new residental buildings in
@@ -56,6 +56,12 @@ spec:
           Geopackages created by the urban fabric generator model and stored in a zip file due to file size.
         path: inputs/
         required: false 
+
+      - name: Parameters
+        description:
+          All input parameters and their values are stored in a csv file.
+        path: inputs/parameters/
+        required: false
         
         
   outputs:
