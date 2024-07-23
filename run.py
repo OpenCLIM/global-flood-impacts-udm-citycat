@@ -81,22 +81,14 @@ else:
 parameter_file = glob(parameters_path + "/*.csv", recursive = True)
 print('parameter_file:', parameter_file)
 
-if len(parameter_file) == 1 :
-    file_path = os.path.splitext(parameter_file[0])
-    print('Filepath:',file_path)
-    filename=file_path[0].split("/")
-    print('Filename:',filename[-1])
-
-    parameters = pd.read_csv(os.path.join(parameters_path + '/' + filename[-1] + '.csv'))
-
-    with open(parameter_file[0]) as file_obj:
-        reader_obj = csv.reader(file_obj)
-        for row in reader_obj:
-            try:
-                if row[0] == 'PROJECTION':
-                    projection = row[1]
-            except:
-                continue
+if len(parameter_file) != 0 :
+    all_parameters = pd.concat(map(pd.read_csv,parameter_file),ignore_index=True)
+    print(all_parameters)
+    if 'PROJECTION' in all_parameters.values:
+        projection_row = all_parameters[all_parameters['PARAMETER']=='PROJECTION']
+        projection=projection_row['VALUE'].values[0]
+    else:
+        projection = os.getenv('PROJECTION')
 
 print('projection:',projection)
 
@@ -339,17 +331,18 @@ if stop_code == 0 :
         
 
 # If one has, move the file to the outputs path
-if len(parameter_file) == 1 :
-    file_path = os.path.splitext(parameter_file[0])
-    print('Filepath:',file_path)
-    filename=file_path[0].split("/")
-    print('Filename:',filename[-1])
-    
-    src = parameter_file[0]
-    print('src:',src)
-    dst = os.path.join(outputs_parameters_data,filename[-1] + '.csv')
-    print('dst,dst')
-    shutil.copy(src,dst)
+if len(parameter_file) != 0 :
+    for i in len(parameter_file):
+        file_path = os.path.splitext(parameter_file[i])
+        print('Filepath:',file_path)
+        filename=file_path[0].split("/")
+        print('Filename:',filename[-1])
+        
+        src = parameter_file[0]
+        print('src:',src)
+        dst = os.path.join(outputs_parameters_data,filename[-1] + '.csv')
+        print('dst,dst')
+        shutil.copy(src,dst)
 
 # Find UDM Metadata files and move them into the outputs folder
 meta_data_txt = glob(udm_para_in_path + "/**/metadata.txt", recursive = True)
