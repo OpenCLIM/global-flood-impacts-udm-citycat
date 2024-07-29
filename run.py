@@ -332,7 +332,7 @@ if stop_code == 0 :
 
 # If one has, move the file to the outputs path
 if len(parameter_file) != 0 :
-    for i in len(parameter_file):
+    for i in range(0,len(parameter_file)):
         file_path = os.path.splitext(parameter_file[i])
         print('Filepath:',file_path)
         filename=file_path[0].split("/")
